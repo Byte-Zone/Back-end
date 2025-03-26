@@ -1,0 +1,10 @@
+Service_name: "download"
+configuration_parameters:
+  - download_folder_path: "../csv_files"
+  - url_base: "https://api.github.com/repos/Byte-Zone/CSV/contents/"
+  - database_host: # Connection type
+  - database_port: # Database connection port
+  - database_name: # Database name
+  - database_user: # Database username
+  - database_password: # Database password
+  
