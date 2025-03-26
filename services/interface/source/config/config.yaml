@@ -1,0 +1,4 @@
+service_name: "interface"
+configuration_parameters:
+  - debug: # True or False
+  - api_data_route: # API route

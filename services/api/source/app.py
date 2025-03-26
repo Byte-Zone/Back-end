@@ -44,7 +44,6 @@ def get_data(initial_date, final_date):
     """
         Collects the particulate matter data in the reported period
     """
-
     initial_date = datetime_formatter(initial_date)
     final_date = datetime_formatter(final_date)
 

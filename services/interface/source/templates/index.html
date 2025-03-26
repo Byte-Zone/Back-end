@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/index.js"></script>
+    <link rel="stylesheet" href="./static/style.css">
+    <title>Dados de PM2.5</title>
+</head>
+<body>
+    <h1>Dados de Material Particulado</h1>
+    <form onsubmit="return validateDates()">
+        <div>
+            <label for="initial-date">Data Inicial:</label>
+            <input type="datetime-local" id="initial-date" required>
+        </div>
+        
+        <div>
+            <label for="final-date">Data Final:</label>
+            <input type="datetime-local" id="final-date" required>
+        </div>
+        
+        <button type="submit">Buscar</button>
+    </form>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Município</th>
+                <th>Média de PM 2.5</th>
+                <th>Data</th>
+                <th>Data de Inserção</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if alldata %}
+                {% for data in alldata.data %}
+                    <tr>
+                        <td>{{ data.estado }}</td>
+                        <td>{{ data.municipio }}</td>
+                        <td>{{ data.media_pm2_5 }}</td>
+                        <td>{{ data.data }}</td>
+                        <td>{{ data.data_insercao }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
