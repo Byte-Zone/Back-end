@@ -1,8 +1,9 @@
 import os
 import pandas as pd
+from datetime import datetime  # Para capturar a data e hora local
 from config.config_reader import ConfigReader
 from models.csv_downloader import CsvDownloader
-from repository.data import Data  # Importa a classe Data para inserção no banco
+from repository.data import Data 
 from config.db_config import Connection
 
 # Lendo os parâmetros do YAML
@@ -32,8 +33,12 @@ def read_csv(file_path):
         # Filtrando as linhas que podem ter valores inválidos após conversão
         df = df.dropna(subset=['media_pm2_5', 'data'])
 
+        # Adiciona a coluna de data de inserção (timestamp local)
+        current_timestamp = datetime.now()  # Data e hora local
+        df['data_insercao'] = current_timestamp
+
         # Formatar os dados para a inserção
-        data = [(row['estado'], row['municipio'], row['media_pm2_5'], row['data']) for _, row in df.iterrows()]
+        data = [(row['estado'], row['municipio'], row['media_pm2_5'], row['data'], row['data_insercao']) for _, row in df.iterrows()]
 
         return data
     
@@ -58,7 +63,7 @@ def main():
             for file_name in downloaded_files:
                 file_path = os.path.join(download_folder_path, file_name)
 
-                # 🔥 Ler e inserir os dados no banco
+                # Ler e inserir os dados no banco
                 csv_data = read_csv(file_path)
                 if csv_data:
                     insert_result = Data.insert_csv(csv_data, connection)

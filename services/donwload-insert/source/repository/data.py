@@ -1,4 +1,5 @@
 import psycopg2
+from datetime import datetime  # Para capturar o timestamp da inserção
 
 class Data:
     
@@ -16,18 +17,22 @@ class Data:
                         estado CHARACTER VARYING(100),
                         municipio CHARACTER VARYING(100) NOT NULL,
                         media_pm2_5 FLOAT,
-                        data TIMESTAMP NOT NULL
+                        data TIMESTAMP NOT NULL,
+                        data_insercao TIMESTAMP NOT NULL
                     );
                 """)
                 connection.commit()
 
                 insert_query = """
-                    INSERT INTO bdc.csv_infos (estado, municipio, media_pm2_5, data) 
-                    VALUES (%s, %s, %s, %s);
+                    INSERT INTO bdc.csv_infos (estado, municipio, media_pm2_5, data, data_insercao) 
+                    VALUES (%s, %s, %s, %s, %s);
                 """
 
-                # 🔥 Certifique-se de que os dados seguem a ordem correta (estado, município, media_pm2_5, data)
-                formatted_data = [(row[0], row[1], float(row[2]) if row[2] else None, row[3]) for row in data]
+                # Obter o timestamp de inserção local
+                data_insercao = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+                # 🔥 Formatar os dados incluindo o timestamp de inserção
+                formatted_data = [(row[0], row[1], float(row[2]) if row[2] else None, row[3], data_insercao) for row in data]
 
                 # 🔥 Executa a inserção em lote
                 cursor.executemany(insert_query, formatted_data)
