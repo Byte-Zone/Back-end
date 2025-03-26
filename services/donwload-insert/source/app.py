@@ -5,6 +5,8 @@ from config.config_reader import ConfigReader
 from models.csv_downloader import CsvDownloader
 from repository.data import Data 
 from config.db_config import Connection
+import schedule
+import time
 
 # Lendo os parâmetros do YAML
 config_reader = ConfigReader()
@@ -73,5 +75,11 @@ def main():
     else:
         print("Não foi possível conectar-se ao banco de dados.")           
 
+# Agendar a execução da função main a cada 5 minutos
+schedule.every(2).minutes.do(main)
+
+# Executar o agendador
 if __name__ == "__main__":
-    main()
+    while True:
+        schedule.run_pending()  # Executa as tarefas agendadas
+        time.sleep(1)  # Aguardar um pouco antes de verificar novamente

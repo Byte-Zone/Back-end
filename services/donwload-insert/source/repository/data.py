@@ -31,10 +31,10 @@ class Data:
                 # Obter o timestamp de inserção local
                 data_insercao = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-                # 🔥 Formatar os dados incluindo o timestamp de inserção
+                #Formatar os dados incluindo o timestamp de inserção
                 formatted_data = [(row[0], row[1], float(row[2]) if row[2] else None, row[3], data_insercao) for row in data]
 
-                # 🔥 Executa a inserção em lote
+                # Executa a inserção em lote
                 cursor.executemany(insert_query, formatted_data)
                 connection.commit()
 
