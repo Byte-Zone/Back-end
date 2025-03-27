@@ -43,4 +43,33 @@ gunicorn -w 4 -b 0.0.0.0:{port} app:app
 |----------|-----------|---------------|
 | **GET**  | `/data/initialdate/<initial_date>/finaldate/<final_date>` | Collects Particulate Matter (PM2.5) data added on a specified period.  |
 
+<br> 
+
+## ⚙️ Running API Tests  
+
+### 🛠 Setup  
+Ensure you have all dependencies installed. If you haven’t installed them yet, run:  
+
+```sh
+pip install -r requirements.txt
+```
+
+### 📂 Navigate to the Correct Directory  
+Move to the `source` directory where the API and tests are located:  
+
+```sh
+cd source
+```
+
+### ✅ Run Tests  
+Execute the tests using `pytest`:  
+
+```sh
+pytest tests/
+```
+
+This will automatically detect and run all test files inside the `tests/` directory. If all tests pass, you will see a success message. Otherwise, errors will be displayed for debugging.  
+
+---
+
 
