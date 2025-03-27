@@ -42,3 +42,5 @@ gunicorn -w 4 -b 0.0.0.0:{port} app:app
 | ⚡ Method | 📌 Endpoint | 📝 Description |
 |----------|-----------|---------------|
 | **GET**  | `/data/initialdate/<initial_date>/finaldate/<final_date>` | Collects Particulate Matter (PM2.5) data added on a specified period.  |
+
+
