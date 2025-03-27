@@ -3,6 +3,8 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-family: sans-serif;
+    background-color: #f6f6f6;
 }
 
 form {
@@ -10,8 +12,46 @@ form {
     margin-bottom: 2rem;
     justify-content: center;
     gap: 1rem;
+    align-items: center;
+}
+
+h1 {
+    font-family: sans-serif;
+    color: #1e0cbd;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+input {
+    height: 1.5rem;
+    border-radius: 8px;
+   border-color: #ebe9e9;
+}
+
+button {
+    border: none;
+    background-color: #1e0cbd;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
 table {
     width: 75rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd; 
+    border-right: 1px solid #ddd; 
+    padding: 0.2rem
+}
+
+th{
+    color: #1e0cbd;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
