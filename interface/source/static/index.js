@@ -1,4 +1,4 @@
-function converterParaUTC(dataStr) {
+function dateConversor(dataStr) {
     let data = new Date(dataStr);
     let ano = data.getFullYear();
     let mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -27,8 +27,8 @@ function validateDates() {
     }
     
     const params = new URLSearchParams({
-        initial_date: converterParaUTC(initialDate),
-        final_date: converterParaUTC(finalDate),
+        initial_date: dateConversor(initialDate),
+        final_date: dateConversor(finalDate),
     }).toString();
 
     window.location.href = `/?${params}`;

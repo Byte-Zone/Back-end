@@ -12,14 +12,15 @@
     <form onsubmit="return validateDates()">
         <div>
             <label for="initial-date">Data Inicial:</label>
-            <input type="datetime-local" id="initial-date" required>
+            <input type="datetime-local" id="initial-date" name="initial_date" value="{{ initial_date }}" required>
+
         </div>
         
         <div>
             <label for="final-date">Data Final:</label>
-            <input type="datetime-local" id="final-date" required>
+            <input type="datetime-local" id="final-date" name="final_date" value="{{ final_date }}" required>
         </div>
-        
+
         <button type="submit">Buscar</button>
     </form>
    

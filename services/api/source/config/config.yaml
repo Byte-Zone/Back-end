@@ -1,9 +1,0 @@
-service_name: "api"
-configuration_parameters:
-  - debug: # True or False
-  - database_host: 
-  - database_port: 
-  - database_name: 
-  - database_user: 
-  - database_password: 
-  - data_route: /data/initialdate/<initial_date>/finaldate/<final_date>

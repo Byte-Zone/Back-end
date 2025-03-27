@@ -22,10 +22,11 @@ def get_data():
 
     initial_date = request.args.get('initial_date')
     final_date = request.args.get('final_date')
-    print(initial_date, final_date)
+
     if not initial_date or not final_date:
         return render_template('index.html', alldata=[])
-    
+
+
     # Initiating request to the API
     api_url = api_data_route.replace("<initial_date>", f"{initial_date}").replace("<final_date>", f"{final_date}")
     response = requests.get(api_url)
@@ -34,8 +35,16 @@ def get_data():
         data = response.json()
     else:
         data = []
+
+
+    # Formatting dates
+    def format_datetime(date_str): 
+        return f"{date_str[:10]} {date_str[10:12]}:{date_str[12:14]}:{date_str[14:16]}"
+
+    initial_date = format_datetime(initial_date)
+    final_date = format_datetime(final_date)
     
-    return render_template('index.html', alldata=data)
+    return render_template('index.html', alldata=data, initial_date=initial_date, final_date=final_date)
 
 
 if __name__ == '__main__':
